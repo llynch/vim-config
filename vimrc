@@ -49,14 +49,16 @@ set nobackup
 set nowritebackup
 set noswapfile
 
+set wrap
+
 set modeline
 
-" Editing
+" Editing:
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 imap <C-BS> <C-W>
 set backspace=indent,eol,start
 
-" Navigation
+" Navigation:
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " backspace go previous position, shift backspace goto next
 nnoremap <S-BS> <C-I>
@@ -84,11 +86,11 @@ vnoremap <C-k> :m-2<CR>gv
 nnoremap <leader>ev :e! ~/.vimrc<CR>
 nnoremap <leader>eb :e! ~/.vim/vundle-config.vim<CR>
 
-" Searching
+" Searching:
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <leader><leader>/ :nohlsearch<CR>:echo "Highlight search removed"<CR>
 
-" Format
+" Format:
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " next buffer
 nnoremap <TAB> <C-w><C-w>
@@ -113,7 +115,7 @@ nnoremap <S-TAB> <<
 "nnoremap <LEFT> <NOP>
 "nnoremap <RIGHT> <NOP>
 
-" Copy Paste
+" Copy Paste:
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CTRL-X and SHIFT-Del are Cut
 vnoremap <C-X> "+x
@@ -151,4 +153,12 @@ noremap <C-Q>		<C-V>
 noremap <C-S>		:update<CR>
 vnoremap <C-S>		<C-C>:update<CR>
 inoremap <C-S>		<C-O>:update<CR>
+
+
+" make mp3 file ungzippable (.mp3 files are part of buildozer files for
+" android development.)
+" inspired from: /usr/share/vim/vim74/plugin/tarPlugin.vim
+"
+" Public Interface:
+au BufReadCmd *.mp3 call tar#Browse(@%)
 
