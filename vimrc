@@ -162,3 +162,11 @@ inoremap <C-S>		<C-O>:update<CR>
 " Public Interface:
 au BufReadCmd *.mp3 call tar#Browse(@%)
 
+" Dont let trailing spaces
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h,*.vim,*.html,*.tex,*.haml,*.mako,*.css,*.js match ERROR /\s\+$/
+
+function Remove_bad_whitespaces()
+    silent! %s/\s\+$//g
+endfunction
+au BufWrite *.py,*.pyw,*.c,*.h,*.vim,*.html,*.tex,*.haml,*.mako,*.css,*.js :call Remove_bad_whitespaces()
+
