@@ -9,7 +9,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'klen/python-mode'
+"Plugin 'klen/python-mode'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'bling/vim-airline'
 "Plugin 'powerline/powerline'
@@ -21,7 +21,7 @@ Plugin 'kien/ctrlp.vim'
 
 Plugin 'scrooloose/nerdtree'
 
-Plugin 'mbbill/undotree'
+"Plugin 'mbbill/undotree'
 Plugin 'jmcantrell/vim-virtualenv'
 
 Plugin 'davidhalter/jedi-vim'
@@ -52,10 +52,10 @@ filetype plugin indent on    " required
 "let pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
 "let pymode_lint_checkers = ['pyflakes', 'mccabe']
 "
-" disable lint on write and put in on <F2>
+" disable lint on write and put in on <F3>
 let g:pymode_lint = 1
 let g:pymode_lint_on_write = 0
-"nnoremap <F2> :PymodeLint<CR>
+nnoremap <F3> :PymodeLint<CR>
 
 
 " configure rope
@@ -74,7 +74,7 @@ let g:pymode_rope_regenerate_on_write = 0
 " ctrlp
 "let g:ctrlp_user_command = 'find %s -type f | sort'
 let g:ctrlp_custom_ignore =  '\v[\/](\.(git|hg|svn))|.*(pyc|pyo)$'
-" set wildignore+=*.pyc,*.swp,*.pyo
+set wildignore+=*.pyc,*.swp,*.pyo
 "
 " ariline
 let g:airline#extensions#branch#enabled = 1
@@ -99,4 +99,5 @@ let g:jedi#popup_on_dot = 0
 " let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabContextDefaultCompletionType = "<c-n>"
+
 
