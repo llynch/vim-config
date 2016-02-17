@@ -9,29 +9,33 @@ call vundle#begin()
 "let Vundlemanage Vundle,required
 Plugin 'VundleVim/Vundle.vim'
 
-"Plugin 'klen/python-mode'
+Plugin 'klen/python-mode'
+"
 Plugin 'flazz/vim-colorschemes'
 Plugin 'bling/vim-airline'
-"Plugin 'powerline/powerline'
 Plugin 'tpope/vim-fugitive'
 
 Plugin 'kien/ctrlp.vim'
-"Plugin 'jaredly/vim-debug'
-"Plugin 'joonty/vdebug'
 
 Plugin 'scrooloose/nerdtree'
 
-"Plugin 'mbbill/undotree'
 Plugin 'jmcantrell/vim-virtualenv'
 
 Plugin 'davidhalter/jedi-vim'
-Plugin 'ervandew/supertab'" doesnotautocompleteusingjedi-vimsobetter
-" disableit
 Plugin 'rking/ag.vim'
 
-"Plugin'scrooloose/syntastic'
-"Plugin'nvie/vim-flake8'
-Plugin 'hdima/python-syntax'
+"Plugin 'python-rope/ropevim'
+
+"Plugin 'ervandew/supertab' " does notauto complete using jedi-vim so better disableit
+"Plugin 'tarmack/vim-python-ftplugin'
+"Plugin 'jaredly/vim-debug'
+"Plugin 'joonty/vdebug'
+"
+"Plugin 'powerline/powerline'
+"Plugin 'mbbill/undotree'
+"Plugin 'scrooloose/syntastic'
+"Plugin 'nvie/vim-flake8'
+"Plugin 'hdima/python-syntax'
 
 call vundle#end() " required
 filetype plugin indent on " required
@@ -57,7 +61,7 @@ filetype plugin indent on " required
 "disable lin to nwrite and put in on<F3>
 let g:pymode_lint=1
 let g:pymode_lint_on_write=0
-"nnoremap <F3> :PymodeLint<CR>
+nnoremap <F3> :PymodeLint<CR>
 
 
 " configurerope
@@ -65,7 +69,7 @@ let g:pymode_lint_on_write=0
 let g:ropevim_local_prefix='<C-c>r'
 let g:ropevim_global_prefix='<C-x>p'
 " disablepymode,itsslowonbufferwrite
-let g:pymode_rope=0
+let g:pymode_rope=1
 let g:pymode_rope_regenerate_on_write=0
 
 " disablepythonfolding
@@ -74,7 +78,7 @@ let g:pymode_rope_regenerate_on_write=0
 "
 "
 " ctrlp
-" letg:ctrlp_user_command='find%s-typef|sort'
+"let g:ctrlp_user_command='find %s -type f | sort'
 let g:ctrlp_custom_ignore='\v[\/](\.(git|hg|svn))|.*(pyc|pyo)$'
 set wildignore+=*.pyc,*.swp,*.pyo
 "
@@ -97,15 +101,40 @@ let g:virtualenv_directory='/home/lynch/opt/'
 "let g:jedi#show_function_definition=1 "deprecateduse
 " show_call_signatures
 let g:jedi#show_call_signatures=1
-let g:jedi#popup_on_dot=0
+let g:jedi#popup_on_dot=1
+" toggle jedi popup
+nnoremap <F4> :let g:jedi#popup_on_dot=!g:jedi#popup_on_dot<CR>:echo 'enabled/disable jedi popups: ' g:jedi#popup_on_dot<CR>
 
 " make supertab complete fo rc-xc-nonly
 "let g:SuperTabDefaultCompletionType="<c-n>"
-let g:SuperTabDefaultCompletionType=" context"
-let g:SuperTabContextDefaultCompletionType=" <c-n>"
+"let g:SuperTabDefaultCompletionType="context"
+"let g:SuperTabContextDefaultCompletionType="<c-n>"
 
 " https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/
 " http://unlogic.co.uk/2013/02/08/vim-as-a-python-ide/
-let g:python_highlight_all=1
-let g:python_version_2=1
+"let g:python_highlight_all=1
+"let g:python_version_2=1
+
+
+let g:jedi#goto_command = "<leader>d"
+let g:jedi#goto_assignments_command = "<leader>g"
+let g:jedi#goto_definitions_command = ""
+let g:jedi#documentation_command = "K"
+let g:jedi#usages_command = "<leader>n"
+let g:jedi#completions_command = "<C-Space>"
+let g:jedi#rename_command = "<leader>r"
+
+" fix slow pymode
+let g:pymode_folding=0
+
+nnoremap <leader>b A<CR>import ipdb; ipdb.set_trace()
+
+"nnoremap <C-]> :tag<CR>
+"
+nnoremap <leader>o :CtrlPBufTagAll<CR>
+"nnoremap <leader>p :CtrlPTag<CR>
+nnoremap <leader>p :call SearchCTags()<CR>
+
+nnoremap <leader>er :CtrlPMixed<CR>
+
 

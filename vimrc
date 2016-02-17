@@ -95,9 +95,6 @@ nnoremap <leader><leader>/ :nohlsearch<CR>:echo "Highlight search removed"<CR>
 " next buffer
 nnoremap <TAB> <C-w><C-w>
 nnoremap <S-TAB> <C-w>p
-" next tab
-nnoremap <leader><TAB> :tabNext<CR>
-
 
 " Make indentation keep visual
 vnoremap > >gv
@@ -106,9 +103,6 @@ vnoremap < <gv
 inoremap <S-TAB> <ESC>V<gi
 vnoremap <S-TAB> <gv
 vnoremap <TAB> >gv
-" I would have liked <TAB> only, but it also override <C-I>
-"nnoremap <leader><TAB> >>
-nnoremap <S-TAB> <<
 
 "nnoremap <UP> <NOP>
 "nnoremap <DOWN> <NOP>
@@ -155,6 +149,8 @@ vnoremap <C-S>		<C-C>:update<CR>
 inoremap <C-S>		<C-O>:update<CR>
 
 
+nnoremap <F5> :exec(getline('.'))<CR>:echo 'executed: ' getline('.')<CR>
+
 " make mp3 file ungzippable (.mp3 files are part of buildozer files for
 " android development.)
 " inspired from: /usr/share/vim/vim74/plugin/tarPlugin.vim
@@ -169,4 +165,6 @@ function Remove_bad_whitespaces()
     silent! %s/\s\+$//g
 endfunction
 au BufWrite *.py,*.pyw,*.c,*.h,*.vim,*.html,*.tex,*.haml,*.mako,*.css,*.js :call Remove_bad_whitespaces()
+
+set tags=./tags
 
