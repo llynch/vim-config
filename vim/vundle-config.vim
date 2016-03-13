@@ -69,7 +69,7 @@ nnoremap <F3> :PymodeLint<CR>
 let g:ropevim_local_prefix='<C-c>r'
 let g:ropevim_global_prefix='<C-x>p'
 " disablepymode,itsslowonbufferwrite
-let g:pymode_rope=1
+let g:pymode_rope=0
 let g:pymode_rope_regenerate_on_write=0
 
 " disablepythonfolding
@@ -83,7 +83,7 @@ let g:ctrlp_custom_ignore='\v[\/](\.(git|hg|svn))|.*(pyc|pyo)$'
 set wildignore+=*.pyc,*.swp,*.pyo
 "
 " ariline
-let g:airline#extensions#branch#enabled=1
+"let g:airline#extensions#branch#enabled=1
 
 
 " nerdtree
@@ -97,10 +97,10 @@ vnoremap <leader>t :NERDTreeToggle<CR>
 " virtualenv
 let g:virtualenv_directory='/home/lynch/opt/'
 
-" jedi-vimturnoffautocomplete.
+" jedi-vim turn off autocomplete.
 "let g:jedi#show_function_definition=1 "deprecateduse
 " show_call_signatures
-let g:jedi#show_call_signatures=1
+let g:jedi#show_call_signatures=0
 let g:jedi#popup_on_dot=1
 " toggle jedi popup
 nnoremap <F4> :let g:jedi#popup_on_dot=!g:jedi#popup_on_dot<CR>:echo 'enabled/disable jedi popups: ' g:jedi#popup_on_dot<CR>
@@ -117,8 +117,8 @@ nnoremap <F4> :let g:jedi#popup_on_dot=!g:jedi#popup_on_dot<CR>:echo 'enabled/di
 
 
 let g:jedi#goto_command = "<leader>d"
-let g:jedi#goto_assignments_command = "<leader>g"
-let g:jedi#goto_definitions_command = ""
+let g:jedi#goto_assignments_command = "<leader>a"
+let g:jedi#goto_definitions_command = "<leader>g"
 let g:jedi#documentation_command = "K"
 let g:jedi#usages_command = "<leader>n"
 let g:jedi#completions_command = "<C-Space>"
@@ -133,8 +133,13 @@ nnoremap <leader>b A<CR>import ipdb; ipdb.set_trace()
 "
 nnoremap <leader>o :CtrlPBufTagAll<CR>
 "nnoremap <leader>p :CtrlPTag<CR>
+
+" see plugin search-ctags ~/.vim/plugin/search-ctags.vim
+nnoremap T "zyiw:call SearchCTagsArg(@z)<CR>
 nnoremap <leader>p :call SearchCTags()<CR>
 
+
 nnoremap <leader>er :CtrlPMixed<CR>
+
 
 
