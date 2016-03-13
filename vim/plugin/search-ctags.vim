@@ -1,34 +1,49 @@
+command! ScratchBuffer setlocal buftype=nofile bufhidden=hide noswapfile
+
 function! SearchCTags()
+    let expression = input('search tags:')
+    if empty(expression) | return | endif
+    call SearchCTagsArg(expression)
+endfunction
+
+let s:current_dir = expand("<sfile>:p:h")
+function! SearchCTagsArg(expression)
+    let expression = a:expression
     sp
     enew
+    set modifiable
     resize 10
-    let l:expression = input('search tags:')
-    if empty(l:expression) | return | endif
-	let l:tagfiles = sort(split(&tags, ','))
-	for l:tagfile in l:tagfiles
-        if ! filereadable(l:tagfile)
+	let tagfiles = sort(split(&tags, ','))
+	for tagfile in tagfiles
+        if ! filereadable(tagfile)
             continue
         endif
-
-        let l:result = system("search-tags.py " . l:tagfile . " " . l:expression . " | sort")
-        call append(line('0'), split(l:result, '\n'))
+        let result = system(s:current_dir . "/search-tags.py " . tagfile . " " . expression . " | sort")
+        call append(line('0'), split(result, '\n'))
     endfo
     0
+    ScratchBuffer
+    "set nomodifiable
     "nnoremap <buffer> <esc> :bd!<CR>
-    "nnoremap <buffer> q :bd!<CR>
+    "nnoremap <buffer> <leader>q :bd!<CR>
     nnoremap <buffer> <CR> :call SearchCTagsGoto()<CR>
     " colors
     syn match Type "^[^:]*:"
     syn match Comment ":.*$"
+    let nblines = line('$')
+    if nblines == 2
+        call SearchCTagsGoto()
+    endif
 endfunction
 
 function! SearchCTagsGoto()
-    let l:line = getline('.')
+    let line = getline('.')
     bd!
-    let l:index = stridx(line, ':')
-    let l:filename = line[0 : l:index - 1]
-    let l:expr = line[l:index + 1 :]
-    exec ":e " . l:filename
-    exec ":" . l:expr
+    let index = stridx(line, ':')
+    let filename = line[0 : index - 1]
+    let expr = line[index + 1 :]
+    exec ":e " . filename
+    0
+    exec ":" . expr
 endfunction
 
