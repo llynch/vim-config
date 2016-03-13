@@ -61,8 +61,8 @@ set backspace=indent,eol,start
 " Navigation:
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " backspace go previous position, shift backspace goto next
-nnoremap <S-BS> <C-I>
-nnoremap <BS> 
+nnoremap <leader><BS> <C-i>
+nnoremap <BS> <C-o>
 " Switch to previous and next buffer
 nnoremap <M-LEFT> :bp<CR>
 nnoremap <M-RIGHT> :bn<CR>
@@ -161,10 +161,24 @@ au BufReadCmd *.mp3 call tar#Browse(@%)
 " Dont let trailing spaces
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h,*.vim,*.html,*.tex,*.haml,*.mako,*.css,*.js match ERROR /\s\+$/
 
-function Remove_bad_whitespaces()
+function! Remove_bad_whitespaces()
+    execute "normal mz"
     silent! %s/\s\+$//g
+    execute "normal 'z"
 endfunction
 au BufWrite *.py,*.pyw,*.c,*.h,*.vim,*.html,*.tex,*.haml,*.mako,*.css,*.js :call Remove_bad_whitespaces()
 
+nnoremap <leader>ec :e %:p:h<CR>
+
 set tags=./tags
+
+"python with virtualenv support
+py << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+  project_base_dir = os.environ['VIRTUAL_ENV']
+  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  execfile(activate_this, dict(__file__=activate_this))
+EOF
 
