@@ -17,6 +17,10 @@ set t_Co=256 " buggy with consol
 "colorscheme myWombat
 colorscheme molokai
 
+" make backougrnd color transparent
+hi Normal guibg=none
+hi NonText ctermbg=none
+
 set incsearch
 set laststatus=2
 
@@ -166,11 +170,14 @@ function! Remove_bad_whitespaces()
     silent! %s/\s\+$//g
     execute "normal 'z"
 endfunction
-au BufWrite *.py,*.pyw,*.c,*.h,*.vim,*.html,*.tex,*.haml,*.mako,*.css,*.js :call Remove_bad_whitespaces()
+au BufWrite *.py,*.pyw,*.c,*.h,*.vim,*.html,*.tex,*.haml,*.mako,*.css,*.js,*.json :call Remove_bad_whitespaces()
 
 nnoremap <leader>ec :e %:p:h<CR>
 
 set tags=./tags
+
+" search from openned buffers
+map <leader>l :ls<CR>:b
 
 "python with virtualenv support
 py << EOF

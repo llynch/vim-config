@@ -24,6 +24,8 @@ Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'rking/ag.vim'
 
+Plugin 'gregsexton/gitv'
+
 "Plugin 'python-rope/ropevim'
 
 "Plugin 'ervandew/supertab' " does notauto complete using jedi-vim so better disableit
@@ -139,7 +141,7 @@ nnoremap T "zyiw:call SearchCTagsArg(@z)<CR>
 nnoremap <leader>p :call SearchCTags()<CR>
 
 
-nnoremap <leader>er :CtrlPMixed<CR>
+nnoremap <leader>er :CtrlPMRU<CR>
 
 
 
