@@ -18,8 +18,8 @@ set t_Co=256 " buggy with consol
 colorscheme molokai
 
 " make backougrnd color transparent
-hi Normal guibg=none
-hi NonText ctermbg=none
+hi Normal ctermbg=none
+" hi NonText ctermbg=none
 
 set incsearch
 set laststatus=2
