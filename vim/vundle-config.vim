@@ -26,6 +26,8 @@ Plugin 'rking/ag.vim'
 
 Plugin 'gregsexton/gitv'
 
+Plugin 'majutsushi/tagbar'
+
 "Plugin 'python-rope/ropevim'
 
 "Plugin 'ervandew/supertab' " does notauto complete using jedi-vim so better disableit
@@ -143,5 +145,11 @@ nnoremap <leader>p :call SearchCTags()<CR>
 
 nnoremap <leader>er :CtrlPMRU<CR>
 
+" tagbar options:
+" https://github.com/majutsushi/tagbar/blob/master/plugin/tagbar.vim#L51
+let g:tagbar_autofocus = 1
+let g:tagbar_show_linenumbers = 1
+let g:tagbar_expand = 1
+nnoremap <F8> :TagbarToggle<CR>
 
 
