@@ -158,12 +158,14 @@ nnoremap <F5> :exec(getline('.'))<CR>:echo 'executed: ' getline('.')<CR>
 " make mp3 file ungzippable (.mp3 files are part of buildozer files for
 " android development.)
 " inspired from: /usr/share/vim/vim74/plugin/tarPlugin.vim
-"
-" Public Interface:
 au BufReadCmd *.mp3 call tar#Browse(@%)
 
 " Dont let trailing spaces
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h,*.vim,*.html,*.tex,*.haml,*.mako,*.css,*.js match ERROR /\s\+$/
+
+" a python plugins seems to force files not to be wraped. all files should
+" wrap
+au BufRead,BufNewFile * :set wrap
 
 function! Remove_bad_whitespaces()
     execute "normal mz"
@@ -171,6 +173,8 @@ function! Remove_bad_whitespaces()
     execute "normal 'z"
 endfunction
 au BufWrite *.py,*.pyw,*.c,*.h,*.vim,*.html,*.tex,*.haml,*.mako,*.css,*.js,*.json :call Remove_bad_whitespaces()
+
+au BufRead,BufNewFile *.haml :setl noai nocin inde=
 
 nnoremap <leader>ec :e %:p:h<CR>
 

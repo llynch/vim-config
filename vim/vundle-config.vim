@@ -28,6 +28,10 @@ Plugin 'gregsexton/gitv'
 
 Plugin 'majutsushi/tagbar'
 
+Plugin 'hail2u/vim-css3-syntax'
+
+Plugin 'rust-lang/rust.vim'
+
 "Plugin 'python-rope/ropevim'
 
 "Plugin 'ervandew/supertab' " does notauto complete using jedi-vim so better disableit
