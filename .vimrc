@@ -181,7 +181,8 @@ nnoremap <leader>ec :e %:p:h<CR>
 set tags=./tags
 
 " search from openned buffers
-map <leader>l :ls<CR>:b
+" map <leader>l :ls<CR>:b
+map <leader>l :CtrlPBuffer<CR>
 
 "python with virtualenv support
 py << EOF

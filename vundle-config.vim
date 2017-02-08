@@ -15,7 +15,8 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
 
-Plugin 'kien/ctrlp.vim'
+"Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 Plugin 'scrooloose/nerdtree'
 
@@ -89,6 +90,8 @@ let g:pymode_rope_regenerate_on_write=0
 "let g:ctrlp_user_command='find %s -type f | sort'
 let g:ctrlp_custom_ignore='\v[\/](\.(git|hg|svn))|.*(pyc|pyo)$'
 set wildignore+=*.pyc,*.swp,*.pyo
+let g:ctrlp_match_func = { 'match': 'GoodMatch' }
+
 "
 " ariline
 "let g:airline#extensions#branch#enabled=1
