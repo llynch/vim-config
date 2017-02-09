@@ -7,8 +7,8 @@ git clone https://github.com/llynch/vim-config.git vim-config
 ```
 mv ~/.vimrc ~/.vimrc.old
 mv ~/.vim ~/.vim.old
-ln -s $(readlink -f vim-config/.vimrc) ~/.vimrc
 ln -s $(readlink -f vim-config) ~/.vim
+ln -s ~/.vim/vimrc ~/.vimrc
 ```
 
 # get vundle
