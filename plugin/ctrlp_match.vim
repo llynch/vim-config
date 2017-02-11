@@ -13,7 +13,7 @@ function! GoodMatch(items, str, limit, mmode, ispath, crfile, regex)
     endif
 
 
-    let cmd = 'python ' . s:current_dir . '/ctrlp_match.py ' . a:str . ' < "'. cachefile .'" | sort'
+    let cmd = 'python ' . s:current_dir . '/ctrlp_match.py ' . a:str . ' < "'. cachefile .'" | sed "/^$/d"'
     return split(system(cmd), '\n')
 
 endfunction

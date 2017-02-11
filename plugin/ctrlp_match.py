@@ -4,7 +4,7 @@ import sys
 
 matches = []
 for arg in sys.argv[1:]:
-    match = re.compile(arg)
+    match = re.compile(arg, re.IGNORECASE)
     matches.append(match)
 
 n=0

@@ -91,7 +91,8 @@ let g:pymode_rope_regenerate_on_write=0
 let g:ctrlp_custom_ignore='\v[\/](\.(git|hg|svn))|.*(pyc|pyo)$'
 set wildignore+=*.pyc,*.swp,*.pyo
 let g:ctrlp_match_func = { 'match': 'GoodMatch' }
-
+let g:ctrlp_extensions = ['ctags']
+command! CtrlPCtags call ctrlp#init(ctrlp#ctags#id())
 "
 " ariline
 "let g:airline#extensions#branch#enabled=1
@@ -147,7 +148,9 @@ nnoremap <leader>o :CtrlPBufTagAll<CR>
 
 " see plugin search-ctags ~/.vim/plugin/search-ctags.vim
 nnoremap T "zyiw:call SearchCTagsArg(@z)<CR>
-nnoremap <leader>p :call SearchCTags()<CR>
+"nnoremap <leader>p :call SearchCTags()<CR>
+nnoremap <leader>p :CtrlPCtags<CR>
+
 
 
 nnoremap <leader>er :CtrlPMRU<CR>
