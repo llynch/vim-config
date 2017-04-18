@@ -33,6 +33,14 @@ Plugin 'hail2u/vim-css3-syntax'
 
 Plugin 'rust-lang/rust.vim'
 
+" Run interactive sheel in vim buffer
+Plugin 'wkentaro/conque.vim'
+
+Plugin 'mbbill/undotree'
+
+Plugin 'will133/vim-dirdiff.git'
+Plugin 'fidian/hexmode.git'
+
 "Plugin 'python-rope/ropevim'
 
 "Plugin 'ervandew/supertab' " does notauto complete using jedi-vim so better disableit
@@ -161,5 +169,3 @@ let g:tagbar_autofocus = 1
 let g:tagbar_show_linenumbers = 1
 let g:tagbar_expand = 1
 nnoremap <F8> :TagbarToggle<CR>
-
-
