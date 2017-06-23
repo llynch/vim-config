@@ -1,5 +1,7 @@
 let $VIM = '~/.vim'
 
+syn on
+
 
 " cd ~/.vim/bundle/ && git clone --recursive https://github.com/davidhalter/jedi-vim.git
 source $VIM/vundle-config.vim
@@ -61,6 +63,7 @@ set modeline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 imap <C-BS> <C-W>
 set backspace=indent,eol,start
+set whichwrap+=h,l,<,>,[,]
 
 " Navigation:
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
