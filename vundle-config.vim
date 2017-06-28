@@ -14,6 +14,7 @@ Plugin 'klen/python-mode'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-haml'
 
 "Plugin 'kien/ctrlp.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -39,7 +40,7 @@ Plugin 'wkentaro/conque.vim'
 Plugin 'mbbill/undotree'
 
 Plugin 'will133/vim-dirdiff.git'
-Plugin 'fidian/hexmode.git'
+"Plugin 'fidian/hexmode.git'
 
 "Plugin 'python-rope/ropevim'
 
@@ -88,6 +89,8 @@ let g:ropevim_global_prefix='<C-x>p'
 " disablepymode,itsslowonbufferwrite
 let g:pymode_rope=0
 let g:pymode_rope_regenerate_on_write=0
+let g:pymode_rope_lookup_project = 0
+let g:pymode_rope_complete_on_dot = 0
 
 " disablepythonfolding
 " setfoldlevelstart=10
