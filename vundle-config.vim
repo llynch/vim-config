@@ -2,79 +2,97 @@
 
 filetype off " required
 
+
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 
-"let Vundlemanage Vundle,required
-Plugin 'VundleVim/Vundle.vim'
+Plug 'junegunn/fzf'
 
-Plugin 'klen/python-mode'
+Plug 'brooth/far.vim'
+
+Plug 'klen/python-mode'
 "
-Plugin 'flazz/vim-colorschemes'
-Plugin 'bling/vim-airline'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-haml'
+Plug 'flazz/vim-colorschemes'
+Plug 'bling/vim-airline'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-haml'
+Plug 'tpope/vim-dispatch'
 
-"Plugin 'kien/ctrlp.vim'
-Plugin 'ctrlpvim/ctrlp.vim'
+Plug 'skywind3000/asyncrun.vim'
 
-Plugin 'scrooloose/nerdtree'
+"Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
-Plugin 'jmcantrell/vim-virtualenv'
+Plug 'scrooloose/nerdtree'
 
-Plugin 'davidhalter/jedi-vim'
-Plugin 'rking/ag.vim'
+Plug 'jmcantrell/vim-virtualenv'
 
-Plugin 'gregsexton/gitv'
+Plug 'davidhalter/jedi-vim'
+Plug 'rking/ag.vim'
 
-Plugin 'majutsushi/tagbar'
+Plug 'gregsexton/gitv'
 
-Plugin 'hail2u/vim-css3-syntax'
+Plug 'majutsushi/tagbar'
 
-Plugin 'rust-lang/rust.vim'
+Plug 'hail2u/vim-css3-syntax'
+
+Plug 'rust-lang/rust.vim'
 
 " Run interactive sheel in vim buffer
-Plugin 'wkentaro/conque.vim'
+" Plug 'wkentaro/conque.vim'
 
-Plugin 'mbbill/undotree'
+Plug 'mbbill/undotree'
 
-Plugin 'will133/vim-dirdiff.git'
-"Plugin 'fidian/hexmode.git'
+Plug 'will133/vim-dirdiff'
+"Plug 'fidian/hexmode.git'
 
-"Plugin 'python-rope/ropevim'
+"Plug 'python-rope/ropevim'
 
-"Plugin 'ervandew/supertab' " does notauto complete using jedi-vim so better disableit
-"Plugin 'tarmack/vim-python-ftplugin'
-"Plugin 'jaredly/vim-debug'
-"Plugin 'joonty/vdebug'
+"Plug 'ervandew/supertab' " does notauto complete using jedi-vim so better disableit
+"Plug 'tarmack/vim-python-ftplugin'
+"Plug 'jaredly/vim-debug'
+"Plug 'joonty/vdebug'
 "
-"Plugin 'powerline/powerline'
-"Plugin 'mbbill/undotree'
-"Plugin 'scrooloose/syntastic'
-"Plugin 'nvie/vim-flake8'
-"Plugin 'hdima/python-syntax'
+"Plug 'powerline/powerline'
+"Plug 'mbbill/undotree'
+"Plug 'scrooloose/syntastic'
+"Plug 'nvie/vim-flake8'
+"Plug 'hdima/python-syntax'
+"
+Plug 'artur-shaik/vim-javacomplete2'
+Plug 'neomake/neomake'
 
-call vundle#end() " required
-filetype plugin indent on " required
+Plug 'junegunn/seoul256.vim'
+
+call plug#end()
+"filetype plugin indent on " required
 
 " Toignorepluginindentchanges,insteaduse:
 " filetypepluginon
 "
 " Briefhelp
-" :PluginList
-" :PluginInstall
-" :PluginSearch foo
-" :PluginClean
+" :PlugList
+" :PlugInstall
+" :PlugSearch foo
+" :PlugClean
 "
 
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " let g:pymode=0
+let g:pymode_debug=1
 
 " lint
 " https://github.com/klen/python-mode/issues/374
 "let pymode_lint_checkers=['pyflakes','pep8','mccabe']
-"let pymode_lint_checkers=['pyflakes','mccabe']
+"let g:pymode_lint_checkers=['pycodestyle']
+" let g:pymode_lint_async=0
 "
 "disable lin to nwrite and put in on<F3>
 let g:pymode_lint=1
@@ -117,14 +135,12 @@ vnoremap <leader>f :NERDTreeFocus<CR>
 nnoremap <leader>t :NERDTreeToggle<CR>
 vnoremap <leader>t :NERDTreeToggle<CR>
 
-" virtualenv
-let g:virtualenv_directory='/home/lynch/opt/'
 
 " jedi-vim turn off autocomplete.
 "let g:jedi#show_function_definition=1 "deprecateduse
 " show_call_signatures
 let g:jedi#show_call_signatures=0
-let g:jedi#popup_on_dot=1
+let g:jedi#popup_on_dot=0
 " toggle jedi popup
 nnoremap <F4> :let g:jedi#popup_on_dot=!g:jedi#popup_on_dot<CR>:echo 'enabled/disable jedi popups: ' g:jedi#popup_on_dot<CR>
 
@@ -146,6 +162,7 @@ let g:jedi#documentation_command = "K"
 let g:jedi#usages_command = "<leader>n"
 let g:jedi#completions_command = "<C-Space>"
 let g:jedi#rename_command = "<leader>r"
+let g:jedi#use_tabs_not_buffers = 0
 
 " fix slow pymode
 let g:pymode_folding=0
