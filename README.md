@@ -11,12 +11,7 @@ ln -s $(readlink -f vim-config) ~/.vim
 ln -s ~/.vim/vimrc ~/.vimrc
 ```
 
-# get vundle
-```
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-```
-
 # setup vim
 ```
-:PluginInstall
+:PlugInstall
 ```
