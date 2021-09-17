@@ -71,6 +71,10 @@ Plug 'neomake/neomake'
 
 Plug 'junegunn/seoul256.vim'
 
+Plug 'GutenYe/json5.vim'
+
+Plug 'ekalinin/Dockerfile.vim'
+
 call plug#end()
 "filetype plugin indent on " required
 

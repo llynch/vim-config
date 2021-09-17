@@ -22,12 +22,13 @@ colorscheme molokai
 " make backougrnd color transparent
 hi Normal ctermbg=none
 " hi NonText ctermbg=none
+hi Comment term=bold cterm=bold gui=bold ctermfg=244
 
 set incsearch
 set laststatus=2
 
 set noeb                " error bell
-set vb                  " visual bell
+"set vb                  " visual bell
 set hlsearch
 set et                  " extendtab convert tabs to space
 set tabstop=4           " size of tab
@@ -90,7 +91,7 @@ vnoremap <C-j> :m'>+<CR>gv
 vnoremap <C-k> :m-2<CR>gv
 
 " open vimrc
-nnoremap <leader>ev :e! ~/.vimrc<CR>
+nnoremap <leader>ev :e! ~/.vim/vimrc<CR>
 nnoremap <leader>eb :e! ~/.vim/vundle-config.vim<CR>
 
 " Searching:
@@ -123,6 +124,7 @@ vnoremap <C-X> "+x
 vnoremap <S-Del> "+x
 
 " CTRL-C and CTRL-Insert are Copy
+vnoremap <C-c> "+y
 vnoremap <C-C> "+y
 vnoremap <C-Insert> "+y
 
@@ -178,6 +180,12 @@ endfunction
 au BufWrite *.py,*.pyw,*.c,*.h,*.vim,*.html,*.tex,*.haml,*.mako,*.css,*.js,*.json :call Remove_bad_whitespaces()
 
 au BufRead,BufNewFile *.haml :setl noai nocin inde=
+au BufRead,BufNewFile *.Jenkinsfile :setl filetype=groovy
+au BufRead,BufNewFile Jenkinsfile :setl filetype=groovy
+au BufRead,BufNewFile Dockerfile.* :setl filetype=dockerfile
+au BufRead,BufNewFile *.Dockerfile :setl filetype=dockerfile
+au BufRead,BufNewFile *.dockerfile :setl filetype=dockerfile
+au BufRead,BufNewFile *.docker :setl filetype=dockerfile
 
 nnoremap <leader>ec :e %:p:h<CR>
 
