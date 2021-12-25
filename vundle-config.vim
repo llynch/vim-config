@@ -37,6 +37,8 @@ Plug 'jmcantrell/vim-virtualenv'
 Plug 'davidhalter/jedi-vim'
 Plug 'rking/ag.vim'
 
+Plug 'myhere/vim-nodejs-complete'
+
 Plug 'gregsexton/gitv'
 
 Plug 'majutsushi/tagbar'
