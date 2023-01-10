@@ -186,8 +186,10 @@ au BufRead,BufNewFile Dockerfile.* :setl filetype=dockerfile
 au BufRead,BufNewFile *.Dockerfile :setl filetype=dockerfile
 au BufRead,BufNewFile *.dockerfile :setl filetype=dockerfile
 au BufRead,BufNewFile *.docker :setl filetype=dockerfile
+au BufRead,BufNewFile *.js,*.ts :setl tabstop=2 shiftwidth=2
 
 nnoremap <leader>ec :e %:p:h<CR>
+nnoremap <leader>e. :cd %:p:h<CR>
 
 set tags=./tags
 

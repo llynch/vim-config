@@ -126,6 +126,7 @@ let g:pymode_rope_complete_on_dot = 0
 " ctrlp
 "let g:ctrlp_user_command='find %s -type f | sort'
 let g:ctrlp_custom_ignore='\v[\/](\.(git|hg|svn))|.*(pyc|pyo)$'
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 set wildignore+=*.pyc,*.swp,*.pyo
 let g:ctrlp_match_func = { 'match': 'GoodMatch' }
 let g:ctrlp_extensions = ['ctags']
