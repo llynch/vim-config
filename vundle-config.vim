@@ -77,6 +77,8 @@ Plug 'GutenYe/json5.vim'
 
 Plug 'ekalinin/Dockerfile.vim'
 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 call plug#end()
 "filetype plugin indent on " required
 
@@ -195,3 +197,6 @@ let g:tagbar_autofocus = 1
 let g:tagbar_show_linenumbers = 1
 let g:tagbar_expand = 1
 nnoremap <F8> :TagbarToggle<CR>
+
+
+source $VIM/coc-plugin.vim

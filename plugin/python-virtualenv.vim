@@ -3,7 +3,7 @@
 " let cmd = 'python ' . s:current_dir . '/python-virtualenv.py'
 " let output = system(cmd)
 "
-python <<EOF
+python3 <<EOF
 import os
 import sys
 
