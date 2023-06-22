@@ -26,6 +26,7 @@ Plug 'tpope/vim-haml'
 Plug 'tpope/vim-dispatch'
 
 Plug 'skywind3000/asyncrun.vim'
+Plug 'hashivim/vim-terraform'
 
 "Plug 'kien/ctrlp.vim'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -78,6 +79,11 @@ Plug 'GutenYe/json5.vim'
 Plug 'ekalinin/Dockerfile.vim'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+
+Plug 'williamboman/mason.nvim', {'branch': 'main'}
+Plug 'williamboman/mason-lspconfig.nvim', {'branch': 'main'}
+Plug 'neovim/nvim-lspconfig'
 
 call plug#end()
 "filetype plugin indent on " required
