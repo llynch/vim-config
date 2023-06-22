@@ -97,6 +97,7 @@ nnoremap <leader>eb :e! ~/.vim/vundle-config.vim<CR>
 " Searching:
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <leader><leader>/ :nohlsearch<CR>:echo "Highlight search removed"<CR>
+" nnoremap <esc> :nohlsearch<CR>:echo "Highlight search removed"<CR>
 
 " Format:
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -116,6 +117,9 @@ vnoremap <TAB> >gv
 "nnoremap <DOWN> <NOP>
 "nnoremap <LEFT> <NOP>
 "nnoremap <RIGHT> <NOP>
+
+" Commenting
+vnoremap <leader># :s/.*/# &/<CR>
 
 " Copy Paste:
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -159,6 +163,7 @@ inoremap <C-S>		<C-O>:update<CR>
 
 
 nnoremap <F5> :exec(getline('.'))<CR>:echo 'executed: ' getline('.')<CR>
+nnoremap <F4> :NvimTreeToggle<CR>
 
 " make mp3 file ungzippable (.mp3 files are part of buildozer files for
 " android development.)
