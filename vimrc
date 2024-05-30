@@ -1,10 +1,8 @@
-let $VIM = '~/.vim'
-
 syn on
 
 
 " cd ~/.vim/bundle/ && git clone --recursive https://github.com/davidhalter/jedi-vim.git
-source $VIM/vundle-config.vim
+" source $VIM/vundle-config.vim
 
 " au bufwritepost .vimrc source ~/.vimrc
 set clipboard=unnamed
@@ -17,15 +15,28 @@ set t_Co=256 " buggy with consol
 "colorscheme desert256
 "colorscheme wombat256mod
 "colorscheme myWombat
-colorscheme molokai
+" colorscheme molokai
 
 " make backougrnd color transparent
-hi Normal ctermbg=none
+" hi Normal ctermb=none
+hi Normal ctermbg=black ctermfg=white guibg=black guifg=white
 " hi NonText ctermbg=none
-hi Comment term=bold cterm=bold gui=bold ctermfg=244
+"hi Comment term=bold cterm=bold gui=bold ctermfg=244 guifg=244
+hi Comment cterm=bold ctermfg=lightgray gui=bold guifg=lightgray
+
+let g:ctrlp_buffer_func = { 'enter': 'BrightHighlightOn', 'exit':  'BrightHighlightOff', }
+
+function BrightHighlightOn()
+  hi CursorLine guibg=darkred
+endfunction
+
+function BrightHighlightOff()
+  hi CursorLine guibg=#191919
+endfunction
 
 set incsearch
-set laststatus=2
+" see help status-line, 3 == global
+set laststatus=3
 
 set noeb                " error bell
 "set vb                  " visual bell
@@ -91,13 +102,26 @@ vnoremap <C-j> :m'>+<CR>gv
 vnoremap <C-k> :m-2<CR>gv
 
 " open vimrc
-nnoremap <leader>ev :e! ~/.vim/vimrc<CR>
-nnoremap <leader>eb :e! ~/.vim/vundle-config.vim<CR>
+"nunmap <leader>e
+" focus nvimtree which I hate
+nnoremap <leader>evv :e! ~/.vim/vimrc<CR>
+nnoremap <leader>evi :e! ~/.config/nvim.nvchad/init.lua<CR>
+nnoremap <leader>evb :e! ~/.config/nvim.nvchad/lua/plugins/init.lua<CR>
+nnoremap <leader>evd :e! ~/.config/nvim.nvchad/lua/plugins/<CR>
+nnoremap <leader>ef :e! ~/.favorites<CR>:exec 'nnoremap <buffer> <CR' . '> Vgf'<CR>
+
+nnoremap <leader>ebb :e! ~/.bashrc<CR>
+nnoremap <leader>ebd :e ~/.bashrc.d/<CR>
+
+nnoremap <leader>ec :e %:p:h<CR>
+nnoremap <leader>e. :cd %:p:h<CR>
+nnoremap <leader>e.. :cd ..<CR>
 
 " Searching:
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <leader><leader>/ :nohlsearch<CR>:echo "Highlight search removed"<CR>
-" nnoremap <esc> :nohlsearch<CR>:echo "Highlight search removed"<CR>
+nnoremap <leader>ar bve"vy:reg v<CR>:exec(':Ag ' . @v )<CR>
+nnoremap <leader>l :CtrlPBuffer<CR>
 
 " Format:
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -118,11 +142,17 @@ vnoremap <TAB> >gv
 "nnoremap <LEFT> <NOP>
 "nnoremap <RIGHT> <NOP>
 
-" Commenting
-vnoremap <leader># :s/.*/# &/<CR>
-
 " Copy Paste:
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Append to y register
+noremap <leader><leader>y <ESC>:call setreg('y', [])<CR>:echo 'Register y cleared'<CR>
+vnoremap <leader>y "Yy:echo 'appended to register y'<CR>
+vnoremap <leader>x "Yx:echo 'appended to register y'<CR>
+nnoremap <leader>y V"Yy:appended to register y<CR>
+nnoremap <leader>Y V"Yy:appended to register y<CR>
+
+nnoremap <leader>p "yp
+
 " CTRL-X and SHIFT-Del are Cut
 vnoremap <C-X> "+x
 vnoremap <S-Del> "+x
@@ -162,8 +192,13 @@ vnoremap <C-S>		<C-C>:update<CR>
 inoremap <C-S>		<C-O>:update<CR>
 
 
-nnoremap <F5> :exec(getline('.'))<CR>:echo 'executed: ' getline('.')<CR>
-nnoremap <F4> :NvimTreeToggle<CR>
+" TERMINAL
+"""""""""""""""""""""""""""""""""''
+:tnoremap <Esc> <C-\><C-n>
+
+nnoremap <F3> :cnext<CR>
+nnoremap <F5> :exec(getline('.'))<CR>:echo 'vim executed: ' getline('.')<CR>
+nnoremap <F6> :echo system(getline('.'))<CR>
 
 " make mp3 file ungzippable (.mp3 files are part of buildozer files for
 " android development.)
@@ -191,13 +226,10 @@ au BufRead,BufNewFile Dockerfile.* :setl filetype=dockerfile
 au BufRead,BufNewFile *.Dockerfile :setl filetype=dockerfile
 au BufRead,BufNewFile *.dockerfile :setl filetype=dockerfile
 au BufRead,BufNewFile *.docker :setl filetype=dockerfile
-au BufRead,BufNewFile *.js,*.ts :setl tabstop=2 shiftwidth=2
+au BufRead,BufNewFile *.js,*.ts,*.vue,*.json,*.yaml :setl tabstop=2 shiftwidth=2
+autocmd FileType typescript,typescriptreact compiler tsc
+autocmd FileType typescript,typescriptreact set makeprg=make
 
-nnoremap <leader>ec :e %:p:h<CR>
-nnoremap <leader>e. :cd %:p:h<CR>
+au FileType fugitive :nmap z =
 
 set tags=./tags
-
-" search from openned buffers
-" map <leader>l :ls<CR>:b
-map <leader>l :CtrlPBuffer<CR>
