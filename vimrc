@@ -185,6 +185,7 @@ vmap <S-Insert>		<C-V>
 
 " Use CTRL-Q to do what CTRL-V used to do
 noremap <C-Q>		<C-V>
+nnoremap <C-g>      :exec setreg('+', expand('%'))<CR><C-g>
 
 " Use CTRL-S for saving, also in Insert mode
 noremap <C-S>		:update<CR>
