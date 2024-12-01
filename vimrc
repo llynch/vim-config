@@ -104,14 +104,14 @@ vnoremap <C-k> :m-2<CR>gv
 " open vimrc
 "nunmap <leader>e
 " focus nvimtree which I hate
-nnoremap <leader>evv :e! ~/.vim/vimrc<CR>
-nnoremap <leader>evi :e! ~/.config/nvim.nvchad/init.lua<CR>
-nnoremap <leader>evb :e! ~/.config/nvim.nvchad/lua/plugins/init.lua<CR>
-nnoremap <leader>evd :e! ~/.config/nvim.nvchad/lua/plugins/<CR>
+nnoremap <leader>ea :e! ~/.config/nvim.scratch/after/plugin/<CR>
+nnoremap <leader>ev :e! ~/.vim/vimrc<CR>
+nnoremap <leader>en :e! ~/.config/nvim.scratch/init.lua<CR>
+nnoremap <leader>ep :e! ~/.config/nvim.scratch/lua/core/plugins.lua<CR>
 nnoremap <leader>ef :e! ~/.favorites<CR>:exec 'nnoremap <buffer> <CR' . '> Vgf'<CR>
 
-nnoremap <leader>ebb :e! ~/.bashrc<CR>
-nnoremap <leader>ebd :e ~/.bashrc.d/<CR>
+nnoremap <leader>eb :e! ~/.bashrc<CR>
+nnoremap <leader>ed :e ~/.bashrc.d/<CR>
 
 nnoremap <leader>ec :e %:p:h<CR>
 nnoremap <leader>e. :cd %:p:h<CR>
@@ -120,8 +120,8 @@ nnoremap <leader>e.. :cd ..<CR>
 " Searching:
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <leader><leader>/ :nohlsearch<CR>:echo "Highlight search removed"<CR>
-nnoremap <leader>ar bve"vy:reg v<CR>:exec(':Ag ' . @v )<CR>
-nnoremap <leader>l :CtrlPBuffer<CR>
+" nnoremap <leader>ar bve"vy:reg v<CR>:exec(':Ag ' . @v )<CR>
+" nnoremap <leader>l :CtrlPBuffer<CR>
 
 " Format:
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
